@@ -3,121 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INWI Network | SMP & Survival</title>
+    <title>INWI Network | SMP & Main</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* CSS VARIABLES & RESET */
         :root {
-            --primary-smp: #55ff55; /* Green for SMP */
-            --primary-main: #00bcd4; /* Cyan for Normal */
-            --dark-bg: #0a0a0a;
-            --card-bg: #161616;
+            --primary-smp: #55ff55; 
+            --primary-main: #00bcd4; 
+            --dark-bg: #0d0d0d;
+            --card-bg: #1a1a1a;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
         }
+
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
             font-family: 'Montserrat', sans-serif;
             background-color: var(--dark-bg);
-            color: white;
-            scroll-behavior: smooth;
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Navigation */
+        /* RESPONSIVE NAVIGATION */
         nav {
             display: flex;
+            flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 10%;
-            background: rgba(0, 0, 0, 0.95);
+            padding: 15px 5%;
+            background: rgba(0, 0, 0, 0.9);
             position: fixed;
-            width: 80%;
-            z-index: 1000;
-            border-bottom: 1px solid #333;
+            width: 100%;
+            top: 0;
+            z-index: 2000;
+            border-bottom: 1px solid #222;
         }
 
-        .logo { font-weight: bold; font-size: 1.5rem; }
+        .logo { font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; }
         .logo span { color: var(--primary-smp); }
 
-        nav ul { display: flex; list-style: none; padding: 0; }
-        nav ul li { margin-left: 25px; }
-        nav ul li a { color: #ccc; text-decoration: none; font-weight: 700; transition: 0.3s; }
-        nav ul li a:hover { color: white; }
+        nav ul { display: flex; list-style: none; margin: 0; padding: 0; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; font-weight: 700; }
 
-        /* Hero Section */
+        /* HERO SECTION */
         header {
-            height: 70vh;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.5)), 
+            padding: 120px 20px 80px;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(13,13,13,1)), 
                         url('https://images.unsplash.com/photo-1627398242454-45a1465c2479?auto=format&fit=crop&q=80&w=1920');
             background-size: cover;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding-top: 80px;
+            background-position: center;
         }
 
-        h1 { font-size: 3.5rem; margin-bottom: 10px; }
-        .subtitle { color: #aaa; font-size: 1.2rem; margin-bottom: 40px; }
+        header h1 { font-size: clamp(2rem, 8vw, 3.5rem); margin: 0; }
+        header p { color: var(--text-dim); margin-bottom: 30px; }
 
-        /* Server Selection Cards */
+        /* SERVER CARDS CONTAINER */
+        .container {
+            max-width: 1100px;
+            margin: -50px auto 50px;
+            padding: 0 20px;
+        }
+
         .server-grid {
             display: flex;
-            gap: 30px;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 0 10%;
-            margin-top: -100px; /* Overlap with hero */
+            flex-direction: column; /* Mobile Default */
+            gap: 25px;
         }
 
         .server-card {
             background: var(--card-bg);
-            width: 350px;
-            padding: 40px;
-            border-radius: 20px;
+            border-radius: 15px;
+            padding: 30px;
             text-align: center;
             border: 1px solid #222;
-            transition: transform 0.3s, border-color 0.3s;
-            position: relative;
+            transition: 0.3s ease;
         }
 
-        .server-card.smp { border-top: 5px solid var(--primary-smp); }
-        .server-card.normal { border-top: 5px solid var(--primary-main); }
+        .server-card h2 { font-size: 1.8rem; margin-top: 0; }
+        .server-card p { color: var(--text-dim); font-size: 0.95rem; }
 
-        .server-card:hover {
-            transform: translateY(-10px);
-            border-color: #444;
-        }
+        .smp-card { border-top: 4px solid var(--primary-smp); }
+        .main-card { border-top: 4px solid var(--primary-main); }
 
-        .server-card h2 { margin-top: 0; font-size: 2rem; }
-        .server-card p { color: #888; line-height: 1.6; }
-
-        /* Copy IP Button */
-        .copy-btn {
-            margin-top: 25px;
-            padding: 12px 25px;
+        /* BUTTONS */
+        .btn-copy {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
             border: none;
             border-radius: 8px;
-            font-weight: bold;
+            font-weight: 700;
+            font-family: inherit;
             cursor: pointer;
-            width: 100%;
-            font-family: 'Montserrat', sans-serif;
             transition: 0.2s;
+            text-transform: uppercase;
         }
 
-        .smp .copy-btn { background: var(--primary-smp); color: black; }
-        .normal .copy-btn { background: var(--primary-main); color: black; }
+        .smp-btn { background: var(--primary-smp); color: #000; }
+        .main-btn { background: var(--primary-main); color: #000; }
 
-        .copy-btn:active { transform: scale(0.95); }
+        .btn-copy:active { transform: scale(0.98); }
 
-        /* Features Section */
-        #about { padding: 100px 10%; text-align: center; }
-        .about-text { max-width: 800px; margin: 0 auto; color: #bbb; font-size: 1.1rem; }
+        /* DESKTOP UI ADJUSTMENTS */
+        @media (min-width: 768px) {
+            .server-grid {
+                flex-direction: row; /* Desktop Side-by-Side */
+                justify-content: center;
+            }
+            .server-card { width: 50%; }
+            .logo { font-size: 1.5rem; }
+            nav { padding: 20px 10%; }
+        }
 
         footer {
-            padding: 40px;
             text-align: center;
-            border-top: 1px solid #1a1a1a;
-            color: #555;
+            padding: 40px 20px;
+            color: #444;
+            font-size: 0.8rem;
         }
     </style>
 </head>
@@ -127,58 +134,46 @@
         <div class="logo">INWI<span>NETWORK</span></div>
         <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#">Discord</a></li>
-            <li><a href="#">Store</a></li>
+            <li><a href="https://discord.gg/yourlink">Discord</a></li>
         </ul>
     </nav>
 
     <header id="home">
-        <h1>Welcome to INWI</h1>
-        <p class="subtitle">Choose your adventure and start crafting today.</p>
+        <h1>INWI NETWORK</h1>
+        <p>Choose your realm and begin your journey.</p>
     </header>
 
-    <section class="server-grid">
-        <!-- SMP SERVER -->
-        <div class="server-card smp">
-            <h2>INWI SMP</h2>
-            <p>Survival with a twist. Custom world generation, player economy, and a friendly community.</p>
-            <button class="copy-btn" onclick="copyIP('smp.inwi.net', this)">COPY SMP IP</button>
-        </div>
+    <div class="container">
+        <div class="server-grid">
+            <!-- SMP SERVER -->
+            <div class="server-card smp-card">
+                <h2>INWI SMP</h2>
+                <p>Advanced Survival, Land Claims, Player Markets, and specialized community events.</p>
+                <button class="btn-copy smp-btn" onclick="copy('smp.inwi.net', this)">Copy SMP IP</button>
+            </div>
 
-        <!-- NORMAL SERVER -->
-        <div class="server-card normal">
-            <h2>INWI MAIN</h2>
-            <p>The classic experience. Creative building, mini-games, and our global lobby hub.</p>
-            <button class="copy-btn" onclick="copyIP('play.inwi.net', this)">COPY SERVER IP</button>
+            <!-- MAIN SERVER -->
+            <div class="server-card main-card">
+                <h2>INWI MAIN</h2>
+                <p>Our global lobby, creative plots, and classic mini-games for everyone to enjoy.</p>
+                <button class="btn-copy main-btn" onclick="copy('play.inwi.net', this)">Copy Main IP</button>
+            </div>
         </div>
-    </section>
-
-    <section id="about">
-        <h2>About Our Network</h2>
-        <p class="about-text">
-            Whether you are looking for the hardcore survival of our <strong>SMP</strong> or the relaxed, 
-            creative vibes of our <strong>Main Server</strong>, INWI provides a lag-free environment 
-            for all players. Join us and become part of the legend.
-        </p>
-    </section>
+    </div>
 
     <footer>
-        <p>&copy; 2026 INWI NETWORK | Powered by GitHub Pages</p>
+        &copy; 2026 INWI NETWORK | Not an official Minecraft product.
     </footer>
 
     <script>
-        function copyIP(ip, button) {
-            navigator.clipboard.writeText(ip);
-            
-            const originalText = button.innerText;
-            button.innerText = "COPIED!";
-            button.style.filter = "brightness(1.2)";
-            
-            setTimeout(() => {
-                button.innerText = originalText;
-                button.style.filter = "none";
-            }, 2000);
+        function copy(text, element) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = element.innerText;
+                element.innerText = "COPIED!";
+                setTimeout(() => {
+                    element.innerText = originalText;
+                }, 1500);
+            });
         }
     </script>
 </body>
