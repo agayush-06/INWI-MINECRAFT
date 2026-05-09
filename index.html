@@ -3,51 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INWI SMP | Official Website</title>
+    <title>INWI Network | SMP & Survival</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* All CSS Integrated for GitHub Pages */
         :root {
-            --primary: #55ff55; /* Lime Green from Logo */
-            --dark-bg: #0d0d0d;
-            --card-bg: #1a1a1a;
-            --accent: #00e676;
+            --primary-smp: #55ff55; /* Green for SMP */
+            --primary-main: #00bcd4; /* Cyan for Normal */
+            --dark-bg: #0a0a0a;
+            --card-bg: #161616;
         }
 
         body {
             margin: 0;
-            padding: 0;
             font-family: 'Montserrat', sans-serif;
             background-color: var(--dark-bg);
             color: white;
             scroll-behavior: smooth;
         }
 
-        /* Navbar */
+        /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
-            background: rgba(0, 0, 0, 0.9);
+            padding: 20px 10%;
+            background: rgba(0, 0, 0, 0.95);
             position: fixed;
-            width: 84%;
+            width: 80%;
             z-index: 1000;
-            border-bottom: 2px solid var(--primary);
+            border-bottom: 1px solid #333;
         }
 
-        .logo { font-weight: bold; font-size: 1.8rem; letter-spacing: 2px; }
-        .logo span { color: var(--primary); }
+        .logo { font-weight: bold; font-size: 1.5rem; }
+        .logo span { color: var(--primary-smp); }
 
-        nav ul { display: flex; list-style: none; margin: 0; }
-        nav ul li { margin-left: 30px; }
-        nav ul li a { color: white; text-decoration: none; font-weight: 700; transition: 0.3s; }
-        nav ul li a:hover { color: var(--primary); }
+        nav ul { display: flex; list-style: none; padding: 0; }
+        nav ul li { margin-left: 25px; }
+        nav ul li a { color: #ccc; text-decoration: none; font-weight: 700; transition: 0.3s; }
+        nav ul li a:hover { color: white; }
 
         /* Hero Section */
         header {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.5)), 
                         url('https://images.unsplash.com/photo-1627398242454-45a1465c2479?auto=format&fit=crop&q=80&w=1920');
             background-size: cover;
             display: flex;
@@ -55,119 +53,131 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+            padding-top: 80px;
         }
 
-        .logo-img {
-            max-width: 400px; /* Space for your generated logo */
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 15px var(--primary));
+        h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        .subtitle { color: #aaa; font-size: 1.2rem; margin-bottom: 40px; }
+
+        /* Server Selection Cards */
+        .server-grid {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0 10%;
+            margin-top: -100px; /* Overlap with hero */
         }
 
-        .ip-container {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px dashed var(--primary);
-            padding: 20px 40px;
-            border-radius: 10px;
+        .server-card {
+            background: var(--card-bg);
+            width: 350px;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #222;
+            transition: transform 0.3s, border-color 0.3s;
+            position: relative;
+        }
+
+        .server-card.smp { border-top: 5px solid var(--primary-smp); }
+        .server-card.normal { border-top: 5px solid var(--primary-main); }
+
+        .server-card:hover {
+            transform: translateY(-10px);
+            border-color: #444;
+        }
+
+        .server-card h2 { margin-top: 0; font-size: 2rem; }
+        .server-card p { color: #888; line-height: 1.6; }
+
+        /* Copy IP Button */
+        .copy-btn {
+            margin-top: 25px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s ease;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            transition: 0.2s;
         }
 
-        .ip-container:hover {
-            background: var(--primary);
-            color: black;
-            transform: scale(1.05);
-        }
+        .smp .copy-btn { background: var(--primary-smp); color: black; }
+        .normal .copy-btn { background: var(--primary-main); color: black; }
 
-        #server-ip { font-size: 1.5rem; font-weight: bold; display: block; }
+        .copy-btn:active { transform: scale(0.95); }
 
         /* Features Section */
-        #features { padding: 100px 10%; }
-        h2 { text-align: center; font-size: 2.5rem; margin-bottom: 50px; }
-        
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid #333;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            border-color: var(--primary);
-            transform: translateY(-10px);
-        }
-
-        .card h3 { color: var(--primary); font-size: 1.6rem; }
+        #about { padding: 100px 10%; text-align: center; }
+        .about-text { max-width: 800px; margin: 0 auto; color: #bbb; font-size: 1.1rem; }
 
         footer {
+            padding: 40px;
             text-align: center;
-            padding: 50px;
-            background: #050505;
-            border-top: 1px solid #222;
+            border-top: 1px solid #1a1a1a;
+            color: #555;
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">INWI<span>SMP</span></div>
+        <div class="logo">INWI<span>NETWORK</span></div>
         <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#">Discord</a></li>
             <li><a href="#">Store</a></li>
         </ul>
     </nav>
 
     <header id="home">
-        <!-- New SMP Branding -->
-        <h1>INWI SMP</h1>
-        <p>A Vanilla+ Experience with a dedicated community.</p>
-        
-        <div class="ip-container" onclick="copyIP()">
-            <span id="server-ip">play.inwi.net</span>
-            <small>CLICK TO COPY IP</small>
-        </div>
+        <h1>Welcome to INWI</h1>
+        <p class="subtitle">Choose your adventure and start crafting today.</p>
     </header>
 
-    <section id="features">
-        <h2>Server Highlights</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Vanilla+ Gameplay</h3>
-                <p>Pure survival with quality-of-life additions like player shops and land claims.</p>
-            </div>
-            <div class="card">
-                <h3>Active Community</h3>
-                <p>Join events, build megabases, and trade with a friendly player base.</p>
-            </div>
-            <div class="card">
-                <h3>No Reset Policy</h3>
-                <p>Your builds are permanent. We expand our borders rather than wiping your progress.</p>
-            </div>
+    <section class="server-grid">
+        <!-- SMP SERVER -->
+        <div class="server-card smp">
+            <h2>INWI SMP</h2>
+            <p>Survival with a twist. Custom world generation, player economy, and a friendly community.</p>
+            <button class="copy-btn" onclick="copyIP('smp.inwi.net', this)">COPY SMP IP</button>
+        </div>
+
+        <!-- NORMAL SERVER -->
+        <div class="server-card normal">
+            <h2>INWI MAIN</h2>
+            <p>The classic experience. Creative building, mini-games, and our global lobby hub.</p>
+            <button class="copy-btn" onclick="copyIP('play.inwi.net', this)">COPY SERVER IP</button>
         </div>
     </section>
 
+    <section id="about">
+        <h2>About Our Network</h2>
+        <p class="about-text">
+            Whether you are looking for the hardcore survival of our <strong>SMP</strong> or the relaxed, 
+            creative vibes of our <strong>Main Server</strong>, INWI provides a lag-free environment 
+            for all players. Join us and become part of the legend.
+        </p>
+    </section>
+
     <footer>
-        <p>&copy; 2026 INWI SMP. Not an official Minecraft product.</p>
+        <p>&copy; 2026 INWI NETWORK | Powered by GitHub Pages</p>
     </footer>
 
     <script>
-        function copyIP() {
-            const ip = document.getElementById('server-ip').innerText;
+        function copyIP(ip, button) {
             navigator.clipboard.writeText(ip);
             
-            const smallText = document.querySelector('.ip-container small');
-            smallText.innerText = "IP COPIED!";
+            const originalText = button.innerText;
+            button.innerText = "COPIED!";
+            button.style.filter = "brightness(1.2)";
+            
             setTimeout(() => {
-                smallText.innerText = "CLICK TO COPY IP";
+                button.innerText = originalText;
+                button.style.filter = "none";
             }, 2000);
         }
     </script>
