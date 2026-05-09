@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CraftWorld | Survival Adventure</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">CRAFT<span>WORLD</span></div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#map">Live Map</a></li>
+            <li><a href="https://store.example.com">Store</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <div class="hero">
+            <h1>The Ultimate Survival Experience</h1>
+            <p>Join 100+ players in an infinite world of blocks and glory.</p>
+            <div class="ip-container" onclick="copyIP()">
+                <span id="server-ip">play.craftworld.com</span>
+                <small>(Click to copy)</small>
+            </div>
+        </div>
+    </header>
+
+    <section id="features">
+        <h2>Why Play With Us?</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Custom Enchants</h3>
+                <p>Over 50+ unique abilities to power up your gear.</p>
+            </div>
+            <div class="card">
+                <h3>Player Economy</h3>
+                <p>Trade, sell, and auction items in a 100% player-driven market.</p>
+            </div>
+            <div class="card">
+                <h3>No Griefing</h3>
+                <p>Land claims and active staff keep your builds safe.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function copyIP() {
+            const ip = document.getElementById('server-ip').innerText;
+            navigator.clipboard.writeText(ip);
+            alert("IP Copied! See you in-game.");
+        }
+    </script>
+</body>
+</html>
