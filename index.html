@@ -3,56 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CraftWorld | Survival Adventure</title>
-    <link rel="stylesheet" href="style.css">
+    <title>INWI SMP | Official Website</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* All CSS Integrated for GitHub Pages */
+        :root {
+            --primary: #55ff55; /* Lime Green from Logo */
+            --dark-bg: #0d0d0d;
+            --card-bg: #1a1a1a;
+            --accent: #00e676;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            width: 84%;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .logo { font-weight: bold; font-size: 1.8rem; letter-spacing: 2px; }
+        .logo span { color: var(--primary); }
+
+        nav ul { display: flex; list-style: none; margin: 0; }
+        nav ul li { margin-left: 30px; }
+        nav ul li a { color: white; text-decoration: none; font-weight: 700; transition: 0.3s; }
+        nav ul li a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1627398242454-45a1465c2479?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .logo-img {
+            max-width: 400px; /* Space for your generated logo */
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px var(--primary));
+        }
+
+        .ip-container {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px dashed var(--primary);
+            padding: 20px 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ip-container:hover {
+            background: var(--primary);
+            color: black;
+            transform: scale(1.05);
+        }
+
+        #server-ip { font-size: 1.5rem; font-weight: bold; display: block; }
+
+        /* Features Section */
+        #features { padding: 100px 10%; }
+        h2 { text-align: center; font-size: 2.5rem; margin-bottom: 50px; }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+        }
+
+        .card h3 { color: var(--primary); font-size: 1.6rem; }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            background: #050505;
+            border-top: 1px solid #222;
+        }
+    </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">CRAFT<span>WORLD</span></div>
+        <div class="logo">INWI<span>SMP</span></div>
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#features">Features</a></li>
-            <li><a href="#map">Live Map</a></li>
-            <li><a href="https://store.example.com">Store</a></li>
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">Store</a></li>
         </ul>
     </nav>
 
     <header id="home">
-        <div class="hero">
-            <h1>The Ultimate Survival Experience</h1>
-            <p>Join 100+ players in an infinite world of blocks and glory.</p>
-            <div class="ip-container" onclick="copyIP()">
-                <span id="server-ip">play.craftworld.com</span>
-                <small>(Click to copy)</small>
-            </div>
+        <!-- New SMP Branding -->
+        <h1>INWI SMP</h1>
+        <p>A Vanilla+ Experience with a dedicated community.</p>
+        
+        <div class="ip-container" onclick="copyIP()">
+            <span id="server-ip">play.inwi.net</span>
+            <small>CLICK TO COPY IP</small>
         </div>
     </header>
 
     <section id="features">
-        <h2>Why Play With Us?</h2>
+        <h2>Server Highlights</h2>
         <div class="grid">
             <div class="card">
-                <h3>Custom Enchants</h3>
-                <p>Over 50+ unique abilities to power up your gear.</p>
+                <h3>Vanilla+ Gameplay</h3>
+                <p>Pure survival with quality-of-life additions like player shops and land claims.</p>
             </div>
             <div class="card">
-                <h3>Player Economy</h3>
-                <p>Trade, sell, and auction items in a 100% player-driven market.</p>
+                <h3>Active Community</h3>
+                <p>Join events, build megabases, and trade with a friendly player base.</p>
             </div>
             <div class="card">
-                <h3>No Griefing</h3>
-                <p>Land claims and active staff keep your builds safe.</p>
+                <h3>No Reset Policy</h3>
+                <p>Your builds are permanent. We expand our borders rather than wiping your progress.</p>
             </div>
         </div>
     </section>
+
+    <footer>
+        <p>&copy; 2026 INWI SMP. Not an official Minecraft product.</p>
+    </footer>
 
     <script>
         function copyIP() {
             const ip = document.getElementById('server-ip').innerText;
             navigator.clipboard.writeText(ip);
-            alert("IP Copied! See you in-game.");
+            
+            const smallText = document.querySelector('.ip-container small');
+            smallText.innerText = "IP COPIED!";
+            setTimeout(() => {
+                smallText.innerText = "CLICK TO COPY IP";
+            }, 2000);
         }
     </script>
 </body>
